@@ -64,7 +64,7 @@ def find_largest_temp_range(files):
                 f"(Max: {row['max']:.2f}°C, Min: {row['min']:.2f}°C)\n"
             )
 
-    print("✅ Largest temperature range saved to largest_temp_range_station.txt")
+    print(" Largest temperature range saved to largest_temp_range_station.txt")
 
 def find_temperature_stability(files):
     # Merge all CSVs
@@ -90,7 +90,18 @@ def find_temperature_stability(files):
         for station, val in most_variable.items():
             f.write(f"Most Variable: Station {station}: StdDev {val:.2f}°C\n")
 
-    print("✅ Temperature stability saved to temperature_stability_stations.txt")
+    print(" Temperature stability saved to temperature_stability_stations.txt")
+
+if __name__ == "__main__":
+    files = load_temp_files()
+    if files:
+        seasonal_avg_temperature(files)      # Commit 2
+        find_largest_temp_range(files)       # Commit 3
+        find_temperature_stability(files)    # Commit 4
+        print(" Q2 Analysis complete! All results saved to text files.")  # Commit 5
+
+
+
 
 
 
