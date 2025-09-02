@@ -40,3 +40,30 @@ if __name__ == "__main__":
     if files:
         calculate_seasonal_average(files)
 
+def find_largest_temp_range(files):
+    # Merge all CSVs
+    dataframes = [pd.read_csv(f) for f in files]
+    combined_data = pd.concat(dataframes, ignore_index=True)
+
+    # Drop missing temperature values
+    combined_data = combined_data.dropna(subset=["Temperature"])
+
+    # Group by station and calculate min, max, and range
+    station_stats = combined_data.groupby("Station")["Temperature"].agg(["min", "max"])
+    station_stats["Range"] = station_stats["max"] - station_stats["min"]
+
+    # Find largest range
+    max_range = station_stats["Range"].max()
+    largest_stations = station_stats[station_stats["Range"] == max_range]
+
+    # Save to file
+    with open("largest_temp_range_station.txt", "w") as f:
+        for station, row in largest_stations.iterrows():
+            f.write(
+                f"Station {station}: Range {row['Range']:.2f}°C "
+                f"(Max: {row['max']:.2f}°C, Min: {row['min']:.2f}°C)\n"
+            )
+
+    print("✅ Largest temperature range saved to largest_temp_range_station.txt")
+
+
