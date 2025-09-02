@@ -1,0 +1,41 @@
+import turtle
+############---- Recursive function to draw a fractal pattern (Koch curve style)-----#####
+def pattern_draw(t, length, depth):
+    if depth == 0:
+        ##########---- Base case: draw a straight line when recursion depth is 0 -----##########
+        t.forward(length)
+    else:
+        ######--- Recursive case: replace line segment with 4 smaller segments ---- ############
+        #######---- turning sequence for Koch curve----###############
+        for angle in [60, -120, 60, 0]:  
+            pattern_draw(t, length / 3, depth - 1)
+            t.left(angle)
+def main():
+    # Create a turtle object for drawing
+    t = turtle.Turtle()
+    #######---- Fastest drawing speed-----#####
+    t.speed(0)  
+     #####------ Hide the turtle cursor for a cleaner look ---#######  
+    t.hideturtle()    
+    screen = turtle.Screen()
+
+    try:
+        num_sides = int(input("Enter number of sides: "))      
+        side_length = int(input("Enter side length: "))         
+        recursion_depth = int(input("Enter recursion depth: "))
+    except ValueError:
+        print("Please enter integers only.")
+        return
+    ##############----- Move turtle so that the drawing is roughly centered on the screen-----#########
+    t.up()
+    t.goto(-side_length/2, -side_length/3)
+    t.down()
+    # Draw the fractal pattern on each side of the polygon
+    for _ in range(num_sides):
+        pattern_draw(t, side_length, recursion_depth)
+        ##########---- Turn for the next polygon side -----#########
+        t.left(360 / num_sides)  
+    screen.exitonclick()
+
+if __name__ == "__main__":
+    main()
