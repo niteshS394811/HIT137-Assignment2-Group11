@@ -1,8 +1,13 @@
 """
-Question 2: Temperature Analysis 
-HIT137 Assignment 2
-"""
+Assignment 2 Q2
+Group Name: [Group No. 11]
+Group Members:
+[Bidhan Chaudhary] - [S394807]
+[Dipesh Sedhai] - [S395457]
+[Nitesh Raj Chaudhary] - [S394811]
+[Shova Bhujel] - [S396449]
 
+"""
 import pandas as pd
 import glob, os
 

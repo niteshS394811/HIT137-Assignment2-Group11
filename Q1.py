@@ -1,3 +1,13 @@
+"""
+Assignment 2 Q1
+Group Name: [Group No. 11]
+Group Members:
+[Bidhan Chaudhary] - [S394807]
+[Dipesh Sedhai] - [S395457]
+[Nitesh Raj Chaudhary] - [S394811]
+[Shova Bhujel] - [S396449]
+
+"""
 import os
 
 # --- Helper functions for character shifting ---
@@ -6,12 +16,18 @@ def get_shifted_char(char, shift, direction='forward'):
     Shifts a character within its alphabetical range.
     Handles both forward and backward shifts.
     """
-    if 'a' <= char <= 'z':
+    if 'a' <= char <= 'm':
         base = ord('a')
-        alphabet_size = 26
-    elif 'A' <= char <= 'Z':
+        alphabet_size = 13
+    elif 'n' <= char <= 'z':
+        base = ord('n')
+        alphabet_size = 13
+    elif 'A' <= char <= 'M':
         base = ord('A')
-        alphabet_size = 26
+        alphabet_size = 13
+    elif 'N' <= char <= 'Z':
+        base = ord('N')
+        alphabet_size = 13
     else:
         # Return non-alphabetic characters unchanged
         return char
