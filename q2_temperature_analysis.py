@@ -66,4 +66,31 @@ def find_largest_temp_range(files):
 
     print("✅ Largest temperature range saved to largest_temp_range_station.txt")
 
+def find_temperature_stability(files):
+    # Merge all CSVs
+    dataframes = [pd.read_csv(f) for f in files]
+    combined_data = pd.concat(dataframes, ignore_index=True)
+
+    # Drop missing values
+    combined_data = combined_data.dropna(subset=["Temperature"])
+
+    # Group by station and calculate std deviation
+    station_std = combined_data.groupby("Station")["Temperature"].std()
+
+    min_std = station_std.min()
+    max_std = station_std.max()
+
+    most_stable = station_std[station_std == min_std]
+    most_variable = station_std[station_std == max_std]
+
+    # Save results to file
+    with open("temperature_stability_stations.txt", "w") as f:
+        for station, val in most_stable.items():
+            f.write(f"Most Stable: Station {station}: StdDev {val:.2f}°C\n")
+        for station, val in most_variable.items():
+            f.write(f"Most Variable: Station {station}: StdDev {val:.2f}°C\n")
+
+    print("✅ Temperature stability saved to temperature_stability_stations.txt")
+
+
 
