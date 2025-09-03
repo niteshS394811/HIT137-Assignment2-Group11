@@ -177,27 +177,4 @@ if __name__ == "__main__":
         
         # 4. Verify the decryption
     verify_files(RAW_FILE, DECRYPTED_FILE)
-    # try:
-    #     # 1. Prompt the user for shift values
-    #     try:
-    #         shift1 = int(input("Enter the first shift value (shift1): "))
-    #         shift2 = int(input("Enter the second shift value (shift2): "))
-    #     except ValueError:
-    #         print("Invalid input. Please enter integer values.")
-    #         exit()
-            
-    #     # 2. Encrypt the file
-    #     encrypt_file(RAW_FILE, ENCRYPTED_FILE, shift1, shift2)
-        
-    #     # 3. Decrypt the file
-    #     decrypt_file(ENCRYPTED_FILE, DECRYPTED_FILE, shift1, shift2)
-        
-    #     # 4. Verify the decryption
-    #     verify_files(RAW_FILE, DECRYPTED_FILE)
-        
-    # finally:
-    #     # Clean up created files
-    #     for filename in [ENCRYPTED_FILE, DECRYPTED_FILE]:
-    #         if os.path.exists(filename):
-    #             os.remove(filename)
-    #             print(f"Cleaned up '{filename}'.")
+  
