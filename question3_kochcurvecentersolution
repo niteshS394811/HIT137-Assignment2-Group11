@@ -1,3 +1,14 @@
+"""
+Assignment 2 Q3
+Group Name: [Group No. 11]
+Group Members:
+[Bidhan Chaudhary] - [S394807]
+[Dipesh Sedhai] - [S395457]
+[Nitesh Raj Chaudhary] - [S394811]
+[Shova Bhujel] - [S396449]
+
+"""
+
 import turtle
 ############---- Recursive function to draw a fractal pattern (Koch curve style)-----#####
 def pattern_draw(t, length, depth):
